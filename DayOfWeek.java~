@@ -1,0 +1,40 @@
+/** DayOfWeek.java by F. M. Carrano
+Finds the day of week on which a given date falls.
+Input: the month (1 - 12); the day (1 - 31); the 4-digit year
+Output: the date and an integer from 1 to 7 that indicates the day
+of the week (1 is Sunday, 2 is Monday, and so on)
+*/
+import java.util.Scanner;
+public class DayOfWeek
+{
+  public static void main (String [] args)
+  {
+    Scanner keyboard = new Scanner (System.in);
+    System.out.println ("This program reports the day of " +
+                        "the week for a given date.\n");
+    System.out.println ("Type the month, day, and year as " +
+                        "integers separated by spaces: ");
+    int month = keyboard.nextInt ();
+    int day = keyboard.nextInt ();
+    int year = keyboard.nextInt ();
+    // Adjust month and year so that January and February
+    // are months 13 and 14 of the previous year
+    int zellerMonth = month;
+    int zellerYear = year;
+    if (month < 3)
+    {
+      zellerMonth = month + 12;
+      zellerYear = year - 1;
+    } // end if
+    // zellerMonth and zellerYear are ready for the computation;
+    // month and year contain original values for output
+    // Zeller's Congruence
+    int computation = day + (26 * (zellerMonth + 1)) / 10 +
+    zellerYear + zellerYear / 4 +
+    6 * (zellerYear / 100) + zellerYear / 400;
+    int dayOfWeek = computation % 7; // 0 - 6 for Saturday - Friday
+    System.out.println ();
+    System.out.println (month + "/" + day + "/" + year +
+                        " is day " + dayOfWeek + " of the week.");
+  } // end main
+} // end DayOfWeek
