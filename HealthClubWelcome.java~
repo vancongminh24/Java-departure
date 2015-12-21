@@ -1,0 +1,49 @@
+/** HealthClubWelcome.java by F. M. Carrano
+Provides the new members of a health club with age-appropriate advice about
+available facilities.
+Input: name and age of the person
+Output: an appropriate message for these age groups:
+under 10
+10 - 13
+14 - 16
+17 - 49
+50 and over
+*/
+import java.util.Scanner;
+public class HealthClubWelcome {
+`public static void main (String [] args){
+  Scanner keyboard = new Scanner (System.in);
+  System.out.println ("Welcome to the JavaJava Fitness Center!\n");
+  System.out.print ("What is your first name? ");
+  String name = keyboard.nextLine ();
+  System.out.print ("Welcome, " + name + ". What is your age? ");
+  int age = keyboard.nextInt ();
+  keyboard.nextLine (); // get ready for next read by advancing
+  // beyond end of line
+  System.out.println ();
+  if ((age > 0) && (age < 10))
+    System.out.println ("The Children's Center is available.");
+  else if ((age >= 10) && (age < 13))
+    System.out.println ("The swimming pool and soccer fields " +
+                        "are available.");
+  else if ((age >= 13) && (age <= 16))
+    System.out.println ("The entire complex is available " +
+                        "but do not overtrain.");
+  else if ((age >= 17) && (age <= 49))
+    System.out.println ("The entire complex is available.\nNote " +
+                        "the schedules for the pool and basketball leagues.");
+  else if (age >= 50){
+    System.out.println ("Anyone can begin an exercise program " +
+                        "with the approval of a doctor. ");
+    System.out.print ("Have you consulted your doctor? ");
+    String response = keyboard.nextLine ();
+    if (response.equalsIgnoreCase ("yes"))
+      System.out.println ("The entire complex is available.");
+    else
+      System.out.println ("The staff physician is available for " +
+                          "consultation.");
+  }
+  else
+    System.out.println ("Input error: age is zero or negative.");
+ } // end main
+} // end HealthClubWelcome
